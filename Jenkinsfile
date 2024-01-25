@@ -11,9 +11,9 @@ pipeline {
         //Où est exécuté votre Nexus
         NEXUS_URL = "172.17.0.2:8081"
         // Dépôt où nous téléchargerons l'artefact
-        NEXUS_REPOSITORY = "maven-central-repo"
+        NEXUS_REPOSITORY = "repo_my_job"
         // Identifiant d'identification Jenkins pour s'authentifier auprès de Nexus OSS
-        NEXUS_CREDENTIAL_ID = "NEXUS_CRED"
+        NEXUS_CREDENTIAL_ID = "NEXUS_CRED_JOB"
 
         ARTIFACT_VERSION = "${BUILD_NUMBER}"
     }
@@ -31,7 +31,7 @@ pipeline {
         stage('Analyse SonarQube') {
             steps {
                 script {
-                    sh "mvn clean verify sonar:sonar -Dsonar.projectKey=test-sonar-3 -Dsonar.projectName='test-sonar-3' -Dsonar.host.url=http://172.17.0.3:9000 -Dsonar.token=sqp_035db7fd7c970fd1991511f1a1c550952833cbae"
+                    sh "mvn clean verify sonar:sonar -Dsonar.projectKey=testMyJob -Dsonar.projectName='testMyJob' -Dsonar.host.url=http://172.17.0.3:9000 -Dsonar.token=sqp_79cf9958dc70247e69736b20ced0234748aa227e"
                 }
             }
         }
